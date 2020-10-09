@@ -15,7 +15,7 @@ request.onsuccess = function(event) {
     db = event.target.result;
     // Check if app is online
     if (navigator.online) {
-        //uploadTransaction();
+        uploadEntry();
     }
 };
 
@@ -30,3 +30,39 @@ function saveRecord(record) {
     const entryObjectStore = transaction.objectStore('new_entry');
     entryObjectStore.add(record);
 };
+
+function uploadEntry() {
+    const transaction = db.transaction(['new_entry'], 'readwrite');
+    const entryObjectStore = transaction.objectStore('new_entry');
+    const getAll = entryObjectStore.getAll();
+
+    // If .getAll() execution is successful:
+    getAll.onsuccess = function() {
+        if (getAll.result.length > 0) {
+            fetch('/api/transaction', {
+                method: 'POST',
+                body: JSON.stringify(getAll.result),
+                headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(serverResponse => {
+                    if (serverResponse.message) {
+                        throw new Error(serverResponse);
+                    }
+                    const transaction = db.transaction(['new_entry'], 'readwrite');
+                    const entryObjectStore = transaction.objectStore('new_entry');
+                    entryObjectStore.clear();
+
+                    alert('All saved transactions have been submitted!');
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+    };
+};
+
+window.addEventListener('online', uploadEntry);
