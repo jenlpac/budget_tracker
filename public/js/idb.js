@@ -7,7 +7,7 @@ const request = indexedDB.open('budget_tracker', 1);
 // If the database version changes:
 request.onupgradeneeded = function(event) {
     const db = event.target.result;
-    db.createObjectStore('new_transaction', { autoIncrement: true });
+    db.createObjectStore('new_entry', { autoIncrement: true });
 };
 
 // If database request successful:
@@ -22,4 +22,11 @@ request.onsuccess = function(event) {
 // If error:
 request.onerror = function(event) {
     console.log(event.target.errorCode);
+};
+
+// If new transaction submittal attempted w/out internet connectevity:
+function saveRecord(record) {
+    const transaction = db.transaction(['new_entry'], 'readwrite');
+    const entryObjectStore = transaction.objectStore('new_entry');
+    entryObjectStore.add(record);
 };
