@@ -8,9 +8,16 @@
 * Application deployed on Heroku
 
 ## Screenshots:
+##### Application deployed locally with offline functionality:
 ![Screenshot 1](./assets/images/Screenshot_1.jpg)
+
+##### Downloadable application deployed to Heroku:
 ![Screenshot 2](./assets/images/Screenshot_2.jpg)
+
+##### Installed application icon:
 ![Screenshot 3](./assets/images/Screenshot_3.jpg)
+
+##### Standalone application running:
 ![Screenshot 4](./assets/images/Screenshot_4.jpg)
 
 ## Links:
