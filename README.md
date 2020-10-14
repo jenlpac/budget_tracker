@@ -8,17 +8,17 @@
 * Application deployed on Heroku
 
 ## Screenshots:
-### Application deployed locally utilizing offline functionality:
+#### Application deployed locally utilizing offline functionality:
 ![Screenshot 1](./assets/images/Screenshot_1.jpg)
-### Downloadable application deployed on Heroku:
+##### Downloadable application deployed on Heroku:
 ![Screenshot 2](./assets/images/Screenshot_2.jpg)
-### Installed application icon:
+###### Installed application icon:
 ![Screenshot 3](./assets/images/Screenshot_3.jpg)
-### Standalone application running:
+#### Standalone application running:
 ![Screenshot 4](./assets/images/Screenshot_4.jpg)
 
 ## Links:
 ### Link to deployed application:
 * https://fierce-journey-09739.herokuapp.com/
-### Link to Github repository:
+#### Link to Github repository:
 * https://github.com/jenlpac/budget_tracker
